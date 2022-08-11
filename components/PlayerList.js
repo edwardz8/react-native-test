@@ -6,7 +6,7 @@ import { PlayerProvider } from '../contexts/PlayerContext';
 
 // import { useRoute } from '@react-navigation/native';
 
-function PlayerList() {
+function PlayerList({navigation}) {
   const { loading, error, value: players } = useAsync(getPlayers)
 
   if (loading) return <Text>Loading</Text>
@@ -15,7 +15,6 @@ function PlayerList() {
   return players.map(player => {
       return (
         <View>
-          <Text>{route.params.id}</Text>
         <FlatList key={player.id}
           renderItem={({player}) => <Text>
             {player.name} 
